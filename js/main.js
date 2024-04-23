@@ -6,5 +6,8 @@ import {
     getAllFullNameAndEmailsAndBoss,
     getBossFullNameAndEmail 
 } from "./module/employees.js";
+import {
+    getAll
+} from "./module/payments.js"
 
-console.log(await getBossFullNameAndEmail());
+console.log(await getAll());
