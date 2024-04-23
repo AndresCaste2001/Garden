@@ -10,5 +10,11 @@ export const getAll = async()=>{
             dataUpdate.push(val)
         }
     });
-    return dataUpdate;
+    dataUpdate.sort((a, b) => {
+        const dateA = new Date(a.date_payment);
+        const dateB = new Date(b.date_payment);
+        return dateB - dateA;
+    });
+
+    return dataUpdate
 }
