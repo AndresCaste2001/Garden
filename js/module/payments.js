@@ -18,3 +18,16 @@ export const getAll = async()=>{
 
     return dataUpdate
 }
+//4. Devuelve un listado con todas las formas de pago que aparecen
+// en la tabla `pago`. Tenga en cuenta que no deben aparecer formas
+// de pago repetidas.
+export const getAllPaymentForms = async()=>{
+    let res = await fetch("http://localhost:5505/payments?payment");
+    let data = await res.json();
+    let payments = new Set();
+    data.forEach(function(pay){
+        payments.add(pay.payment)
+    });
+
+    return payments
+}
