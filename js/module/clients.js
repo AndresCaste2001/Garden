@@ -1,3 +1,6 @@
+import{
+    getEmployeesByCode
+}from "./employees.js"
 //16. Devuelve un listado con todos los clientes que sean de la ciudad de `Madrid` y cuyo representante de ventas tenga el código de empleado `11` o `30`.
 
 export const getAllByCityCode = async()=>{
@@ -15,4 +18,15 @@ export const getClientsByCountry = async()=>{
         return val.contact_name
     });
     return dataUpdate
+}
+
+//2.1 Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
+
+export const getEmployeeNameByClient = async()=>{
+    let res = await fetch("http://localhost:5501/clients");
+    let data = await res.json();
+    let dataUpdate = []
+    for(let client in data){
+        let employee = await getEmployeesByCode(client.code_employee_sales_manager);
+    }
 }

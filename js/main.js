@@ -12,7 +12,8 @@ import {
     getAllPaymentForms
 } from "./module/payments.js"
 import {
-    getAllByCityCode,getClientsByCountry
+    getAllByCityCode,getClientsByCountry,
+    getEmployeeNameByClient
 }from "./module/clients.js"
 import {
     getAllRequestStatus,
@@ -22,4 +23,4 @@ import{
     getAllByGamaAndStock
 }from "./module/product.js"
 
-console.log(await getAllByGamaAndStock());
+console.log(await getEmployeeNameByClient());
