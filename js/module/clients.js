@@ -169,3 +169,35 @@ export const getEmployeeCodeByCity = async()=>{
     });
     return dataUpdate
 }
+
+//7. Devuelve el nombre de los clientes y el nombre de sus
+// representantes junto con la ciudad de la oficina a la que pertenece 
+//el representante.
+export const getEmployeeNameAndCityByClient = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let data = await res.json();
+    let dataUpdate = [];
+    
+    for (let client of data) {
+        let [employee] = await getEmployeesByCode(client.code_employee_sales_manager);
+        let [oficina] = await getCityOfficeByCode(employee.code_office)
+        let codes = await getAllCodeClient();
+        
+        let nombreCliente = client.client_name;
+        let nombreRepresentante = `${employee.name} ${employee.lastname1} ${employee.lastname2}`;
+        let clientId = client.client_code;
+        let nombreOficina = oficina.city
+        // let informacionOficina = await getCityOfficeByCode(`"${codigoCiudad}))
+
+    
+            dataUpdate.push({
+                Id:clientId,    
+                nombre: nombreCliente,
+                nombreRepresentante: nombreRepresentante,
+                ciudadOficina: nombreOficina
+            });
+        
+    }
+    
+    return (dataUpdate) ;
+}

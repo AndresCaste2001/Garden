@@ -21,7 +21,8 @@ import {
     getEmployeeNameByClientNotPay,
     getEmployeeNameAndCityByClientPay,
     getEmployeeNameAndCityByClientNotPay,
-    getEmployeeCodeByCity
+    getEmployeeCodeByCity,
+    getEmployeeNameAndCityByClient
     
 }from "./module/clients.js"
 import {
@@ -32,4 +33,4 @@ import{
     getAllByGamaAndStock
 }from "./module/product.js"
 
-    console.log(await getAddressOfficeByClient())
+    console.log(await getEmployeeNameAndCityByClient())
