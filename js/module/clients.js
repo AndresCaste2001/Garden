@@ -52,9 +52,36 @@ export const getEmployeeNameByClientPay = async () => {
         let nombreCliente = client.client_name;
         let nombreRepresentante = `${employee.name} ${employee.lastname1} ${employee.lastname2}`;
         let clientId = client.client_code;
+        let codes = await getAllCodeClient()
         
-        if (getAllCodeClient.has(clientId)) { 
+         if (codes.has(clientId)) { 
             dataUpdate.push({
+                Id:clientId,
+                nombre: nombreCliente,
+                nombreRepresentante: nombreRepresentante
+            });
+        }
+    }
+    
+    console.log(dataUpdate) ;
+}
+
+//3. Muestra el nombre de los clientes que **no** hayan realizado pagos junto con el nombre de sus representantes de ventas.
+export const getEmployeeNameByClientNotPay = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let data = await res.json();
+    let dataUpdate = [];
+    
+    for (let client of data) {
+        let [employee] = await getEmployeesByCode(client.code_employee_sales_manager);
+        let nombreCliente = client.client_name;
+        let nombreRepresentante = `${employee.name} ${employee.lastname1} ${employee.lastname2}`;
+        let clientId = client.client_code;
+        let codes = await getAllCodeClient()
+        
+        if (!codes.has(clientId)) { 
+            dataUpdate.push({
+                Id:clientId,    
                 nombre: nombreCliente,
                 nombreRepresentante: nombreRepresentante
             });

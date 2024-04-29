@@ -16,7 +16,8 @@ import {
 import {
     getAllByCityCode,getClientsByCountry,
     getEmployeeNameByClient,
-    getEmployeeNameByClientPay
+    getEmployeeNameByClientPay,
+    getEmployeeNameByClientNotPay
 }from "./module/clients.js"
 import {
     getAllRequestStatus,
@@ -26,6 +27,5 @@ import{
     getAllByGamaAndStock
 }from "./module/product.js"
 
-(async () => {
-    console.log(await getEmployeeNameByClientPay());
-})();
+    console.log(await getAllCodeClient())
+    console.log(await getEmployeeNameByClientNotPay())
