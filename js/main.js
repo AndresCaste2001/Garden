@@ -6,7 +6,8 @@ import {
 import { 
     getAllFullNameAndEmailsAndBoss,
     getBossFullNameAndEmail,
-    getFullNameAndPositionByPositiion
+    getFullNameAndPositionByPositiion,
+    getFullNameAndBoss
 } from "./module/employees.js";
 import {
     getAll,
@@ -33,4 +34,4 @@ import{
     getAllByGamaAndStock
 }from "./module/product.js"
 
-    console.log(await getEmployeeNameAndCityByClient())
+    console.log(await getFullNameAndBoss())
