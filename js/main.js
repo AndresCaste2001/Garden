@@ -1,6 +1,7 @@
 import { 
     getAllOficceAndCodeCity, 
-    getAllOficceCityAndMovil 
+    getAllOficceCityAndMovil,
+    getAddressOfficeByClient
 } from "./module/offices.js";
 import { 
     getAllFullNameAndEmailsAndBoss,
@@ -17,7 +18,11 @@ import {
     getAllByCityCode,getClientsByCountry,
     getEmployeeNameByClient,
     getEmployeeNameByClientPay,
-    getEmployeeNameByClientNotPay
+    getEmployeeNameByClientNotPay,
+    getEmployeeNameAndCityByClientPay,
+    getEmployeeNameAndCityByClientNotPay,
+    getEmployeeCodeByCity
+    
 }from "./module/clients.js"
 import {
     getAllRequestStatus,
@@ -27,5 +32,4 @@ import{
     getAllByGamaAndStock
 }from "./module/product.js"
 
-    console.log(await getAllCodeClient())
-    console.log(await getEmployeeNameByClientNotPay())
+    console.log(await getAddressOfficeByClient())

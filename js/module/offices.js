@@ -1,3 +1,5 @@
+import {getEmployeesByCode} from "./employees.js"
+import {getEmployeeCodeByCity} from "./clients.js"
 // 1. Devuelve un listado con el código de oficina y la ciudad 
 // donde hay oficinas.
 export const getAllOficceAndCodeCity = async()=>{
@@ -18,8 +20,31 @@ export const getAllOficceCityAndMovil = async()=>{
     let dataUpdate = data.map(val =>{
         return {
             code_office: val.code_office,
-            movil: val.movil
+            movil: al.movil
         }
     })
     return dataUpdate
+}
+
+//Devuelve la ciudad por codigo 
+
+export const getCityOfficeByCode = async(code)=>{
+    let res = await fetch(`http://localhost:5504/offices?code_office=${code}`)
+    let data = await res.json();
+    return data;
+}
+//6. Lista la dirección de las oficinas que tengan clientes en `Fuenlabrada`.
+export const getAddressOfficeByClient = async()=>{
+    let res = await fetch("http://localhost:5504/offices")
+    let data = await res.json();
+    let dataUpdate = [];
+    let employee = await getEmployeeCodeByCity()
+
+    for (let codeEmployee of employee){
+        let [oficina] = await getCityOfficeByCode(codeEmployee)
+        dataUpdate.push({
+            direccionOficina: `${oficina.address1} ${oficina.address2}`;
+        })
+    }
+    return codeEmployee
 }
