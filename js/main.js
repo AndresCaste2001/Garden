@@ -9,11 +9,14 @@ import {
 } from "./module/employees.js";
 import {
     getAll,
-    getAllPaymentForms
+    getAllPaymentForms,
+    getAllCodeClient
+
 } from "./module/payments.js"
 import {
     getAllByCityCode,getClientsByCountry,
-    getEmployeeNameByClient
+    getEmployeeNameByClient,
+    getEmployeeNameByClientPay
 }from "./module/clients.js"
 import {
     getAllRequestStatus,
@@ -23,4 +26,6 @@ import{
     getAllByGamaAndStock
 }from "./module/product.js"
 
-console.log(await getEmployeeNameByClient());
+(async () => {
+    console.log(await getEmployeeNameByClientPay());
+})();

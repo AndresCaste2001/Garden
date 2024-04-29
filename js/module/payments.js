@@ -31,3 +31,15 @@ export const getAllPaymentForms = async()=>{
 
     return payments
 }
+
+// devuelve un listado de los clientes que han hecho pagos
+
+export const getAllCodeClient = async ()=>{ 
+    let res= await fetch("http://localhost:5505/payments");
+    let data = await res.json();
+    let codeClients = new Set();
+    data.forEach(function(code){
+        codeClients.add(code.code_client)
+    });
+    return codeClients
+}

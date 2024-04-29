@@ -1,6 +1,10 @@
 import{
     getEmployeesByCode
 }from "./employees.js"
+
+import{
+    getAllCodeClient
+}from "./payments.js"
 //16. Devuelve un listado con todos los clientes que sean de la ciudad de `Madrid` y cuyo representante de ventas tenga el código de empleado `11` o `30`.
 
 export const getAllByCityCode = async()=>{
@@ -25,8 +29,37 @@ export const getClientsByCountry = async()=>{
 export const getEmployeeNameByClient = async()=>{
     let res = await fetch("http://localhost:5501/clients");
     let data = await res.json();
-    let dataUpdate = []
-    for(let client in data){
-        let employee = await getEmployeesByCode(client.code_employee_sales_manager);
+    let dataUpdate = [];
+    for(let client of data){
+        let [employee] = await getEmployeesByCode(client.code_employee_sales_manager);
+        let nombreCliente = client.client_name
+        let nombreRepresentante = `${employee.name} ${employee.lastname1} ${employee.lastname2}`;
+        dataUpdate.push({
+            nombre: nombreCliente,
+            nombreRepresentante: nombreRepresentante
+        })
     }
+    return dataUpdate
+}
+//2.2 Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
+export const getEmployeeNameByClientPay = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let data = await res.json();
+    let dataUpdate = [];
+    
+    for (let client of data) {
+        let [employee] = await getEmployeesByCode(client.code_employee_sales_manager);
+        let nombreCliente = client.client_name;
+        let nombreRepresentante = `${employee.name} ${employee.lastname1} ${employee.lastname2}`;
+        let clientId = client.client_code;
+        
+        if (getAllCodeClient.has(clientId)) { 
+            dataUpdate.push({
+                nombre: nombreCliente,
+                nombreRepresentante: nombreRepresentante
+            });
+        }
+    }
+    
+    console.log(dataUpdate) ;
 }
