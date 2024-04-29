@@ -35,16 +35,15 @@ export const getCityOfficeByCode = async(code)=>{
 }
 //6. Lista la dirección de las oficinas que tengan clientes en `Fuenlabrada`.
 export const getAddressOfficeByClient = async()=>{
-    let res = await fetch("http://localhost:5504/offices")
-    let data = await res.json();
     let dataUpdate = [];
     let employee = await getEmployeeCodeByCity()
 
     for (let codeEmployee of employee){
-        let [oficina] = await getCityOfficeByCode(codeEmployee)
+        let [employeeData] = await getEmployeesByCode(codeEmployee)
+        let [oficina] = await getCityOfficeByCode(employeeData.code_office)
         dataUpdate.push({
-            direccionOficina: `${oficina.address1} ${oficina.address2}`;
+            direccionOficina: `${oficina.address1} ${oficina.address2}`
         })
     }
-    return codeEmployee
+    return dataUpdate
 }
