@@ -68,3 +68,33 @@ export const getFullNameAndBoss = async () => {
 
     return dataUpdate;
 }
+
+//Devuelve un listado que muestre el nombre de cada empleados,
+// el nombre de su jefe y el nombre del jefe de sus jefe.
+export const getFullNameAndBossBoss = async () => {
+    let res = await fetch("http://localhost:5502/employees");
+    let data = await res.json();
+    let dataUpdate = [];
+
+    const findBossBoss = (employee) => {
+        let boss = data.find(employeeData => employeeData.employee_code === employee.code_boss);
+        if (!boss || boss.code_boss === null) {
+            return boss;
+        } else {
+            return findBossBoss(boss);
+        }
+    };
+
+    dataUpdate = data.map(empleado => {
+        let boss = data.find(employee => employee.employee_code === empleado.code_boss);
+        let bossBoss = boss ? findBossBoss(boss) : null;
+
+        return {
+            nombre: `${empleado.name} ${empleado.lastname1} ${empleado.lastname2}`,
+            jefe: boss ? `${boss.name} ${boss.lastname1} ${boss.lastname2}` : "No tiene jefe",
+            jefeDelJefe: bossBoss ? `${bossBoss.name} ${bossBoss.lastname1} ${bossBoss.lastname2}` : "No tiene jefe"
+        };
+    });
+
+    return dataUpdate;
+}
