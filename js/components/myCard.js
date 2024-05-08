@@ -1,5 +1,6 @@
 import { 
-    getAllByCityCode, 
+    getAllByCityCode,
+    getClientsByCountry
 } from "../module/clients.js";
 
 export class Mycard extends HTMLElement{
@@ -36,11 +37,30 @@ export class Mycard extends HTMLElement{
             `;
         });
     }
+    async getClientsByCountryDesign(){
+        let data = await getClientsByCountry();
+        data.forEach(val => {  
+            this.shadowRoot.innerHTML += /*html*/`
+            <div class="report__card">
+                    <div class="card__title">
+                        <div>Nombre</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p>${val}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        console.log(await  getClientsByCountry())
+    }
 
     static get observedAttributes() {
         return ["logic"];
     }
     attributeChangedCallback(name, old, now) {
         if(name=="logic" && now=="client_16") this.getAllByCityCodeDesign()
+        if(name=="logic" && now=="client_6") this.getClientsByCountryDesign()
     }
 }

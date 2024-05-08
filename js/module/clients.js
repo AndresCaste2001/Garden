@@ -16,14 +16,7 @@ export const getAllByCityCode = async()=>{
     let res = await fetch("http://localhost:5501/clients?city=Madrid");
     let data = await res.json();
     let dataUpdate = [];
-    data.forEach(client => {
-
-        if (client.code_employee_sales_manager == '11' || client.code_employee_sales_manager == '30'){
-            dataUpdate.push(client)
-        }
-
-    })
-    
+    dataUpdate = data.filter(val=>val.code_employee_sales_manager == 11 || val.code_employee_sales_manager == 30);
     return dataUpdate
 }
 
