@@ -8,6 +8,8 @@ import{
 import{
     getCityOfficeByCode
 }from "./offices.js"
+
+
 //16. Devuelve un listado con todos los clientes que sean de la ciudad de `Madrid` y cuyo representante de ventas tenga el código de empleado `11` o `30`.
 
 export const getAllByCityCode = async()=>{
@@ -17,6 +19,7 @@ export const getAllByCityCode = async()=>{
     dataUpdate = data.filter(val=>val.code_employee_sales_manager == 11 || val.code_employee_sales_manager == 30);
     return dataUpdate
 }
+
 //6. Devuelve un listado con el nombre de los todos los clientes españoles.
 export const getClientsByCountry = async()=>{
     let res = await fetch("http://localhost:5501/clients?country=Spain");
