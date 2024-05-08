@@ -13,7 +13,6 @@ btn.forEach(val =>{
         
         if(e.target.innerHTML=="clients"){
             report__details.innerHTML = /*html*/`
-                <my-details logic="client_6" text="7. Devuelve el nombre de los clientes y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante."></my-details>
                 <my-details logic="client_16" text="16. Devuelve un listado con todos los clientes que sean de la ciudad de Madrid y cuyo representante de ventas tenga el código de empleado 11 o 30."></my-details>
             `
         }
