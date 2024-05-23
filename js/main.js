@@ -35,4 +35,3 @@ import{
     getAllByGamaAndStock
 }from "./module/product.js"
 
-    console.log(await getFullNameAndBossBoss())
