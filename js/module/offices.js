@@ -3,7 +3,7 @@ import {getEmployeeCodeByCity} from "./clients.js"
 //1. Devuelve un listado con el codigo de oficina y la ciudad 
 // donde hay oficinas.
 export const getAllOficceAndcodeCity = async () => {
-    let res = await fetch("http://172.16.101.146:5663/offices")
+    let res = await fetch("http://localhost:5503/offices")
     let data = await res.json()
     let dataUpdate = data.map(val => {
         return {
@@ -17,7 +17,7 @@ export const getAllOficceAndcodeCity = async () => {
 
 //2. Devuelve un listado con la ciudad y el telefono de las oficinas de España
 export const getAllOficceCityAndMovil = async () => {
-    let res = await fetch("http://172.16.101.146:5663/offices?country=España")
+    let res = await fetch("http://localhost:5503/offices?country=España")
     let data = await res.json()
     let dataUpdate = data.map(val => {
         return {
@@ -30,7 +30,7 @@ export const getAllOficceCityAndMovil = async () => {
 
 // Obtener la informacion de una oficina por su codigo
 export const getOfficesByCode = async(code) =>{
-    let res = await fetch(`http://172.16.101.146:5663/offices?code_office=${code}`);
+    let res = await fetch(`http://localhost:5503/offices?code_office=${code}`);
     let dataClients = await res.json();
     return dataClients;
 }
@@ -54,7 +54,7 @@ export const getAddressOfficeByClient = async()=>{
 // Función para obtener todas las oficinas
 export const getAllOffices = async () => {
     // Realizar la solicitud para obtener todas las oficinas
-    const res = await fetch("http://172.16.101.146:5663/offices");
+    const res = await fetch("http://localhost:5503/offices");
     const offices = await res.json();
     return offices;
 };

@@ -2,7 +2,7 @@ import{getAllRequestByClient} from "./requests.js"
 // M2.11. ayuda Se dan todos los codigos de cada producto que se compró en ese request
 export const processRequestDetails = async () => {
     // Obtener los detalles de las solicitudes
-    let res = await fetch("http://172.16.101.146:5666/request_details");
+    let res = await fetch("http://localhost:5506/request_details");
     let data = await res.json();
     
     // Obtener el diccionario de solicitudes por cliente
@@ -34,7 +34,7 @@ export const processRequestDetails = async () => {
 //3.8 AYUDA conjunto con todos los productos que han sido pedidos 
 export const ProductsRequests = async () => {
     // Obtener los detalles de las solicitudes
-    let res = await fetch("http://172.16.101.146:5666/request_details");
+    let res = await fetch("http://localhost:5506/request_details");
     let data = await res.json();
     let productSet = new Set();
 

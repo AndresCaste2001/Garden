@@ -1,6 +1,6 @@
 //7. Devuelve un listado con los distintos estados por los que puede pasar un pedido.export const getAll = async() => {
     export const getAll = async() => {    
-        let res = await fetch("http://172.16.101.146:5667/requests")
+        let res = await fetch("http://localhost:5507/requests")
         let data = await res.json();
         let dataUpdate =  data.map(val =>(val.status
         ))
@@ -15,7 +15,7 @@
     //repetidos. Resuelva la consulta:
     
     export const getAllClientsYear = async() => {
-        let res = await fetch("http://172.16.101.146:5667/requests")
+        let res = await fetch("http://localhost:5507/requests")
         let data = await res.json();
         let YearRequest = new Set ()
         data.forEach(val => {
@@ -34,7 +34,7 @@
     // a tiempo.  
     
     export const getAllRequestByTime = async () => {
-        let res = await fetch("http://172.16.101.146:5667/requests");
+        let res = await fetch("http://localhost:5507/requests");
         let data = await res.json();
         let getTime = new Set();
     
@@ -65,7 +65,7 @@
     // fecha esperada y fecha de entrega de los pedidos cuya fecha de 
     //entrega ha sido al menos dos días antes de la fecha esperada.
     export const getAllRequestByTimeDays = async () => {
-        let res = await fetch("http://172.16.101.146:5667/requests");
+        let res = await fetch("http://localhost:5507/requests");
         let data = await res.json();
         let getTime = new Set();
     
@@ -94,7 +94,7 @@
     //11. Devuelve un listado de todos los pedidos que fueron
     // **rechazados** en `2009`.
     export const getAllRequestByYear = async () => {
-        let res = await fetch("http://172.16.101.146:5667/requests");
+        let res = await fetch("http://localhost:5507/requests");
         let data = await res.json();
         let getTime = new Set();
     
@@ -119,7 +119,7 @@
     //12.Devuelve un listado de todos los pedidos
     //que han sido **entregados** en el mes de enero de cualquier año.
     export const getAllRequestByMonth = async () => {
-        let res = await fetch("http://172.16.101.146:5667/requests");
+        let res = await fetch("http://localhost:5507/requests");
         let data = await res.json();
         let getTime = new Set();
     
@@ -144,7 +144,7 @@
     
     //M11. Ayuda Devuelve los pedidos de cada cliente
     export const getAllRequestByClient = async () => {
-        let res = await fetch("http://172.16.101.146:5667/requests");
+        let res = await fetch("http://localhost:5507/requests");
         let data = await res.json();
     
         let requestDictionary = {};
