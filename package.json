@@ -8,7 +8,7 @@
     "start-all": "npm run clients & npm run employes & npm run offices & npm run payments & npm run product & npm run request_details & npm run requests & npm run dev",
     "dev": "node --watch js/main.js",
     "clients": "json-server -h 172.16.101.146 js/db/clients.json -p 5661",
-    "employees": "json-server -h 172.16.101.146 js/db/employees.json -p 5662",
+    "employes": "json-server -h 172.16.101.146 js/db/employes.json -p 5662",
     "offices": "json-server -h 172.16.101.146 js/db/offices.json -p 5663",
     "payments": "json-server -h 172.16.101.146 js/db/payments.json -p 5664",
     "product": "json-server -h 172.16.101.146 js/db/product.json -p 5665",
