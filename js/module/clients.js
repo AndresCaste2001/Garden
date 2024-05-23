@@ -7,7 +7,7 @@ import {getAllRequestByTime, getAllRequestByClient} from "./requests.js"
 // y cuyo representante de ventas tenga el código de empleado 11 o 30.
 
 export const getAllMadridClients = async() =>{
-    let res = await fetch("http://localhost:5501/clients?city=Madrid")
+    let res = await fetch("http://172.16.101.146:5661/clients?city=Madrid")
     let data = await res.json();
     let dataUpdate = [];
     dataUpdate=data.filter(val=> val.code_employee_sales_manager==11 || val.code_employee_sales_manager==30)
@@ -17,7 +17,7 @@ export const getAllMadridClients = async() =>{
 
 //6. Devuelve un listado con el nombre de los todos los clientes españoles.
 export const getAllSpainClients = async() => {
-    let res = await fetch("http://localhost:5501/clients?country=Spain")
+    let res = await fetch("http://172.16.101.146:5661/clients?country=Spain")
     let data = await res.json();
     let dataUpdate = data.map(val =>{ 
         return {
@@ -29,7 +29,7 @@ return dataUpdate;
 
 //2.1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
 export const getAllClientsAndEmployees = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://172.16.101.146:5661/clients");
     let data = await res.json();
 
     let dataUpdate = [];
@@ -50,7 +50,7 @@ export const getAllClientsAndEmployees = async () => {
 //2.2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
 
 export const getAllPAyClientsAndEmployees = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://172.16.101.146:5661/clients");
     let data = await res.json();
 
     let dataUpdate = [];
@@ -73,7 +73,7 @@ export const getAllPAyClientsAndEmployees = async () => {
 // junto con el nombre de sus representantes de ventas.
 
 export const getAllNotPAyClientsAndEmployees = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://172.16.101.146:5661/clients");
     let data = await res.json();
 
     let dataUpdate = [];
@@ -95,7 +95,7 @@ export const getAllNotPAyClientsAndEmployees = async () => {
 //2.4. Devuelve el nombre de los clientes que han hecho pagos y el nombre de
 // sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
 export const getAllPAyClientsAndEmployeesCity = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://172.16.101.146:5661/clients");
     let data = await res.json();
 
     let dataUpdate = [];
@@ -124,7 +124,7 @@ export const getAllPAyClientsAndEmployeesCity = async () => {
 //pertenece el representante.
 
 export const getAllNotPAyClientsAndEmployeesCity = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://172.16.101.146:5661/clients");
     let data = await res.json();
 
     let dataUpdate = [];
@@ -150,7 +150,7 @@ export const getAllNotPAyClientsAndEmployeesCity = async () => {
 
 //2.6 Devuelve una lista de empleados que tienen clientes en fuenlabrada
 export const getEmployeeCodeByCity = async()=>{
-    let res = await fetch("http://localhost:5501/clients?city=Fuenlabrada");
+    let res = await fetch("http://172.16.101.146:5661/clients?city=Fuenlabrada");
     let data = await res.json();
     let dataUpdate = new Set();
     data.forEach(function(code){
@@ -165,7 +165,7 @@ export const getEmployeeCodeByCity = async()=>{
 // 2.7. Devuelve el nombre de los clientes y el nombre de sus representantes junto
 // con la ciudad de la oficina a la que pertenece el representante.
 export const getAllClientsAndEmployeesCity = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://172.16.101.146:5661/clients");
     let data = await res.json();
     let dataUpdate = [];
 
@@ -190,7 +190,7 @@ export const getAllClientsAndEmployeesCity = async () => {
 //tiempo un pedido.
 
 export const getAllClientsByDeliveryDate = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://172.16.101.146:5661/clients");
     let data = await res.json();
 
     let dataUpdate = [];
@@ -223,7 +223,7 @@ export const getAllClientsByDeliveryDate = async () => {
 // 3.1. Devuelve un listado que muestre solamente los clientes que no 
 //han realizado ningún pago.
 export const getAllNotPAyClients = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://172.16.101.146:5661/clients");
     let data = await res.json();
 
     let dataUpdate = [];
@@ -242,7 +242,7 @@ export const getAllNotPAyClients = async () => {
 //3.2. Devuelve un listado que muestre solamente los clientes que no
 // han realizado ningún pedido.
 export const getAllNotRequestClients = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://172.16.101.146:5661/clients");
     let data = await res.json();
 
     let dataUpdate = [];
@@ -282,7 +282,7 @@ export const getClientsWithoutPaymentsAndRequests = async () => {
 
 //3.11 AYUDA se buscan los clientes que si hayan realizado pedidos
 export const getAllRequestClient = async () => {
-    let res = await fetch("http://localhost:5501/clients");
+    let res = await fetch("http://172.16.101.146:5661/clients");
     let data = await res.json();
 
     let dataUpdate = [];

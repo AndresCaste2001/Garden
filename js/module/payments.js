@@ -2,7 +2,7 @@
 // año 2008 mediante Paypal. Ordene el resultado de mayor a menor.
 
 export const getallPaymentFromPayPalEachYear = async() =>{
-    let res = await fetch("http://172.16.101.146:5705/payments?payment=PayPal")
+    let res = await fetch("http://172.16.101.146:5664/payments?payment=PayPal")
     let data = await res.json();
     let dataUpdate = [];
     data.forEach(val => {
@@ -25,7 +25,7 @@ export const getallPaymentFromPayPalEachYear = async() =>{
 //la tabla `pago`. Tenga en cuenta que no deben aparecer formas de pago repetidas.
 
 export const getallPaymentForms = async() =>{
-    let res = await fetch("http://172.16.101.146:5705/payments?payment")
+    let res = await fetch("http://172.16.101.146:5664/payments?payment")
     let data = await res.json();
     let getTime = new Set();
 
@@ -46,7 +46,7 @@ export const getallPaymentForms = async() =>{
 
 // M.2 Ayuda Devuelve un conjunto con el codigo de cada cliente que hizo un pago 
 export const getallPayClients = async() =>{
-    let res = await fetch("http://172.16.101.146:5705/payments?payment")
+    let res = await fetch("http://172.16.101.146:5664/payments?payment")
     let data = await res.json();
     let getTime = new Set();
 

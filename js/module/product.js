@@ -6,7 +6,7 @@ import{processRequestDetails,ProductsRequests } from "./request_details.js"
 // primer lugar los de mayor precio.
 
 export const getallProductsByGama= async() =>{
-    let res = await fetch("http://172.16.101.146:5706/products?gama=Ornamentales")
+    let res = await fetch("http://172.16.101.146:5665/products?gama=Ornamentales")
     let data = await res.json();
     let dataUpdate = [];
     data.forEach(val => {
@@ -33,7 +33,7 @@ export const getallProductsByGama= async() =>{
 
 //Crear el mapeo de códigos de producto a gama
 export const getProductData = async () => {
-    let res = await fetch("http://172.16.101.146:5706/products");
+    let res = await fetch("http://172.16.101.146:5665/products");
     let data = await res.json();
 
     // Crear un mapeo de code_product a gama
@@ -67,7 +67,7 @@ export const transformProductDictionary = async () => {
 
 //3.8. Devuelve un listado de los productos que nunca han aparecido en un pedido.
 export const getProductNotRequest = async () => {
-    let res = await fetch("http://172.16.101.146:5706/products");
+    let res = await fetch("http://172.16.101.146:5665/products");
     let data = await res.json();
     let dataUpdate = [];
     
@@ -89,7 +89,7 @@ export const getProductNotRequest = async () => {
 //El resultado debe mostrar el nombre, la descripción y la imagen del producto.
 
 export const getProductNotRequestAndDescription = async () => {
-    let res = await fetch("http://172.16.101.146:5706/products");
+    let res = await fetch("http://172.16.101.146:5665/products");
     let data = await res.json();
     let dataUpdate = [];
     
