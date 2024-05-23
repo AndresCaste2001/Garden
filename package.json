@@ -20,6 +20,6 @@
   "license": "ISC",
   "dependencies": {
     "async-prompt": "^1.0.1",
-    "json-server -h 172.16.101.146": "^1.0.0-alpha.23"
+    "json-server": "^1.0.0-alpha.23"
   }
 }
